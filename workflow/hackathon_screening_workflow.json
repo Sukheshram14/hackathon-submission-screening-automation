@@ -1,0 +1,2407 @@
+{
+  "name": "hackathon_screening_workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -1760,
+        384
+      ],
+      "id": "f6674640-194c-433d-a9ad-30fb34ece8a9",
+      "name": "Groq Chat Model5",
+      "credentials": {
+        "groqApi": {
+          "id": "domLtRU0gGsWb9Eh",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"ps_id\": \"\",\n  \"objective\": \"\",\n  \"inputs\": [],\n  \"outputs\": [],\n  \"critical_mechanisms\": [\n    {\n      \"mechanism\": \"\",\n      \"purpose\": \"\",\n      \"expected_behavior\": \"\"\n    }\n  ],\n  \"constraints\": [],\n  \"evaluation_requirements\": [],\n  \"critical_questions\": [],\n  \"minimum_credible_solution\": \"\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -1632,
+        384
+      ],
+      "id": "63d9e008-11f6-4ff3-a0ff-0bf1cf6ddaae",
+      "name": "Structured Output Parser5"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -6720,
+        960
+      ],
+      "id": "dbd1d641-2f8a-4093-9b99-8767c7fc9666",
+      "name": "Loop Over Items2"
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        192,
+        512
+      ],
+      "id": "46b1a71c-7d37-4044-a1c0-ca4f04eb9806",
+      "name": "Wait7",
+      "webhookId": "93e5bd3c-1813-4b58-adb1-f86c045ac11d"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -1184,
+        336
+      ],
+      "id": "5f49c4ae-5436-4176-94a3-b9d7c10a2a1e",
+      "name": "Groq Chat Model6",
+      "credentials": {
+        "groqApi": {
+          "id": "domLtRU0gGsWb9Eh",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"problem_understanding\": {\n    \"status\": \"STRONG\",\n    \"evidence\": \"\",\n    \"gaps\": []\n  },\n  \"mechanisms\": [\n    {\n      \"name\": \"\",\n      \"status\": \"STRONG\",\n      \"evidence\": \"\",\n      \"missing\": \"\"\n    }\n  ],\n  \"architecture\": {\n    \"status\": \"STRONG\",\n    \"assessment\": \"\",\n    \"gaps\": []\n  },\n  \"algorithm_logic\": {\n    \"status\": \"STRONG\",\n    \"assessment\": \"\",\n    \"gaps\": []\n  },\n  \"data_handling\": {\n    \"status\": \"STRONG\",\n    \"assessment\": \"\"\n  },\n  \"failure_handling\": {\n    \"status\": \"STRONG\",\n    \"assessment\": \"\"\n  },\n  \"domain_quality\": {\n    \"status\": \"STRONG\",\n    \"assessment\": \"\"\n  },\n  \"feasibility\": {\n    \"status\": \"FEASIBLE\",\n    \"assessment\": \"\"\n  },\n  \"critical_gaps\": [],\n  \"unsupported_claims\": [],\n  \"overall_judgment\": {\n    \"classification\": \"TECHNICALLY_CREDIBLE\",\n    \"reason\": \"\"\n  }\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -1056,
+        336
+      ],
+      "id": "0c1877bb-de86-4162-b6e9-a3ba1178abf6",
+      "name": "Structured Output Parser6"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -608,
+        288
+      ],
+      "id": "afacf050-4350-4fe6-b468-9c1d35136a2b",
+      "name": "Groq Chat Model7",
+      "credentials": {
+        "groqApi": {
+          "id": "domLtRU0gGsWb9Eh",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"problem_relevance_understanding\": {\n    \"score\": 0,\n    \"max_score\": 15,\n    \"justification\": \"\"\n  },\n  \"innovation_differentiation\": {\n    \"score\": 0,\n    \"max_score\": 15,\n    \"justification\": \"\"\n  },\n  \"technical_depth_solution_design\": {\n    \"score\": 0,\n    \"max_score\": 25,\n    \"justification\": \"\"\n  },\n  \"solution_completeness_technical_credibility\": {\n    \"score\": 0,\n    \"max_score\": 20,\n    \"justification\": \"\"\n  },\n  \"domain_specific_technical_quality\": {\n    \"score\": 0,\n    \"max_score\": 15,\n    \"justification\": \"\"\n  },\n  \"real_world_impact_applicability\": {\n    \"score\": 0,\n    \"max_score\": 10,\n    \"justification\": \"\"\n  },\n  \"overall_score\": 0,\n  \"strengths\": [],\n  \"weaknesses\": [],\n  \"missing_information\": [],\n  \"red_flags\": [],\n  \"recommendation\": \"SHORTLIST\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -480,
+        288
+      ],
+      "id": "63feaa4b-1a72-4195-a2ba-66ae7396c124",
+      "name": "Structured Output Parser7"
+    },
+    {
+      "parameters": {
+        "amount": 40
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -1408,
+        96
+      ],
+      "id": "e3398c12-872c-44e2-86e9-249cb478da64",
+      "name": "Wait8",
+      "webhookId": "a47b61b4-fc84-4ea5-8c72-3469a55c87f9"
+    },
+    {
+      "parameters": {
+        "amount": 40
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -832,
+        48
+      ],
+      "id": "5c8578d2-14e7-4870-8179-64c80123d416",
+      "name": "Wait9",
+      "webhookId": "a3dbe871-00eb-43f1-b604-621ac002bc74"
+    },
+    {
+      "parameters": {
+        "amount": 40
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -1408,
+        368
+      ],
+      "id": "fc50e524-66fa-427f-a4f9-c2ee376ea63e",
+      "name": "Wait10",
+      "webhookId": "885f80ec-6b1a-476b-bb0f-2f2a578f18d1"
+    },
+    {
+      "parameters": {
+        "amount": 40
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -832,
+        320
+      ],
+      "id": "07c617a4-57da-46ab-9cb1-511610099817",
+      "name": "Wait11",
+      "webhookId": "0ddc3b84-5d96-49fe-a10b-0bbe3b61123f"
+    },
+    {
+      "parameters": {
+        "amount": 40
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -256,
+        192
+      ],
+      "id": "66d2f05a-5903-4669-a153-18baef0c263c",
+      "name": "Wait12",
+      "webhookId": "c95d58af-aa7c-48b9-add4-4818e08084f0"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM",
+          "mode": "list",
+          "cachedResultName": "Initial Screening Submission (Responses)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1907678408,
+          "mode": "list",
+          "cachedResultName": "Form responses 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit#gid=1907678408"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -6944,
+        768
+      ],
+      "id": "346564b7-5ed0-497a-883f-77e475e360ca",
+      "name": "Get row(s) in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OwruUIKXDZqj7RUW",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -7168,
+        768
+      ],
+      "id": "65403a65-f21d-491c-99c8-2f80756b836e",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -2912,
+        480
+      ],
+      "id": "0cd72de9-44f7-465f-bfea-28c3933b87f6",
+      "name": "Groq Chat Model8",
+      "credentials": {
+        "groqApi": {
+          "id": "domLtRU0gGsWb9Eh",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"technical_approach\": {\n      \"type\": \"string\",\n      \"description\": \"Technical approach, methodology, and engineering process explicitly described by the team.\"\n    },\n    \"architecture\": {\n      \"type\": \"string\",\n      \"description\": \"System architecture, components, modules, layers, services, pipelines, and component interactions.\"\n    },\n    \"algorithm_core_logic\": {\n      \"type\": \"string\",\n      \"description\": \"Algorithms, formulas, decision logic, computational logic, processing logic, and step-by-step methods.\"\n    },\n    \"data_flow_processing\": {\n      \"type\": \"string\",\n      \"description\": \"How data enters, moves through, is transformed, processed, stored, transmitted, and converted into outputs.\"\n    },\n    \"implementation\": {\n      \"type\": \"string\",\n      \"description\": \"Concrete implementation details including modules, classes, components, services, pipelines, and platform-specific implementation.\"\n    },\n    \"model_ai_methodology\": {\n      \"type\": \"string\",\n      \"description\": \"AI/ML models, model architectures, training, fine-tuning, prompts, agents, embeddings, classifiers, datasets, features, and inference methods.\"\n    },\n    \"security_privacy\": {\n      \"type\": \"string\",\n      \"description\": \"Explicitly described security and privacy mechanisms such as authentication, authorization, encryption, access control, secure storage, and anonymization.\"\n    },\n    \"testing_validation\": {\n      \"type\": \"string\",\n      \"description\": \"Testing methods, validation procedures, benchmarks, metrics, test cases, performance testing, and evaluation procedures.\"\n    },\n    \"solution\": {\n      \"type\": \"string\",\n      \"description\": \"The proposed technical solution and how it addresses the problem.\"\n    },\n    \"features\": {\n      \"type\": \"string\",\n      \"description\": \"Technically relevant features and functionality explicitly described by the team.\"\n    },\n    \"technology_stack\": {\n      \"type\": \"string\",\n      \"description\": \"Programming languages, frameworks, libraries, platforms, SDKs, cloud services, and development tools.\"\n    },\n    \"database_apis\": {\n      \"type\": \"string\",\n      \"description\": \"Databases, storage systems, external APIs, protocols, integrations, and data services.\"\n    }\n  },\n  \"required\": [\n    \"technical_approach\",\n    \"architecture\",\n    \"algorithm_core_logic\",\n    \"data_flow_processing\",\n    \"implementation\",\n    \"model_ai_methodology\",\n    \"security_privacy\",\n    \"testing_validation\",\n    \"solution\",\n    \"features\",\n    \"technology_stack\",\n    \"database_apis\"\n  ],\n  \"additionalProperties\": false\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -2784,
+        480
+      ],
+      "id": "b1d3956e-05b1-49ab-a9e5-ccc68c144e10",
+      "name": "Structured Output Parser8"
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -2560,
+        464
+      ],
+      "id": "8793e4b4-1f0b-4920-acfc-cd6fd3c6ab38",
+      "name": "Wait13",
+      "webhookId": "885f80ec-6b1a-476b-bb0f-2f2a578f18d1"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM",
+          "mode": "list",
+          "cachedResultName": "Initial Screening Submission (Responses)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1907678408,
+          "mode": "list",
+          "cachedResultName": "Form responses 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit#gid=1907678408"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Team Leader Mail id": "={{ $('PS VALIDATOR').item.json['Team Leader Mail id'] }}",
+            "Processed": "DONE",
+            "Reason": "={{ $json.Reason }}"
+          },
+          "matchingColumns": [
+            "Team Leader Mail id"
+          ],
+          "schema": [
+            {
+              "id": "Timestamp",
+              "displayName": "Timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Team Name",
+              "displayName": "Team Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Team Leader Mail id",
+              "displayName": "Team Leader Mail id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "PS ID",
+              "displayName": "PS ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Submit the PPT",
+              "displayName": "Submit the PPT",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Submit the MD file",
+              "displayName": "Submit the MD file",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Declaration:",
+              "displayName": "Declaration:",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email address",
+              "displayName": "Email address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Processed",
+              "displayName": "Processed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Valid",
+              "displayName": "Valid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Reason",
+              "displayName": "Reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Penality",
+              "displayName": "Penality",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -3584,
+        528
+      ],
+      "id": "8b86d599-ea4e-4ffa-8318-d464fa859085",
+      "name": "IMAGE VERIFICATION",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OwruUIKXDZqj7RUW",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "19bfbd99-8617-4f6f-b326-782fb6a38f04",
+              "leftValue": "={{ $json.hasImage }}",
+              "rightValue": false,
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -3808,
+        432
+      ],
+      "id": "8e65c954-7341-44bc-b648-d832125518db",
+      "name": "HAS IMAGE"
+    },
+    {
+      "parameters": {
+        "jsCode": "/**\n * Checks if the content contains standard Markdown/HTML images \n * or base64-encoded image strings.\n * * @param {string|object} input - The text or object to check.\n * @returns {object} Analysis result with detection status and matches found.\n */\nfunction checkForImages(input) {\n  // Convert object to string if input is JSON/Object\n  const textContent = typeof input === 'object' ? JSON.stringify(input) : String(input);\n\n  // 1. Regex for Base64 Data URI images (e.g., data:image/png;base64,...)\n  const base64Regex = /data:image\\/(?:png|jpg|jpeg|gif|webp|svg\\+xml);base64,[A-Za-z0-9+/=]+/gi;\n\n  // 2. Regex for Markdown image syntax (e.g., ![alt](url))\n  const markdownImgRegex = /!\\[.*?\\]\\((.*?)\\)/g;\n\n  // 3. Regex for HTML <img> tags (e.g., <img src=\"...\" />)\n  const htmlImgRegex = /<img\\s+[^>]*src=[\"']?([^\"'\\s>]+)[\"']?[^>]*>/gi;\n\n  // Find all matches\n  const base64Matches = textContent.match(base64Regex) || [];\n  const markdownMatches = textContent.match(markdownImgRegex) || [];\n  const htmlMatches = textContent.match(htmlImgRegex) || [];\n\n  const hasBase64 = base64Matches.length > 0;\n  const hasImage = hasBase64 || markdownMatches.length > 0 || htmlMatches.length > 0;\n\n  return {\n    hasImage: hasImage,\n    hasBase64: hasBase64,\n    counts: {\n      base64Images: base64Matches.length,\n      markdownImages: markdownMatches.length,\n      htmlImages: htmlMatches.length,\n      total: base64Matches.length + markdownMatches.length + htmlMatches.length\n    },\n    matches: {\n      base64: base64Matches,\n      markdown: markdownMatches,\n      html: htmlMatches\n    }\n  };\n}\n\n// ==========================================\n// Integration into n8n JS Node with Reason Logic\n// ==========================================\nfor (const item of $input.all()) {\n  const result = checkForImages(item.json);\n  \n  item.json.hasImage = result.hasImage;\n  item.json.hasBase64 = result.hasBase64;\n  item.json.imageDetails = result.counts;\n\n  // If images are detected, append the review flag to any existing Reason text\n  if (result.hasImage) {\n    const existingReason = item.json.Reason ? String(item.json.Reason).trim() : '';\n    const flagText = \"NEED MANUAL REVIEW , AS IMAGE\";\n\n    if (existingReason.length > 0) {\n      item.json.Reason = `${existingReason} | ${flagText}`;\n    } else {\n      item.json.Reason = flagText;\n    }\n  }\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4032,
+        432
+      ],
+      "id": "873d76ac-5f6a-46b8-91b2-7f6c0f1b4b28",
+      "name": "IMAGE RECOGINITION"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ea4897f9-e6d9-4189-aa0e-4464b67aac3b",
+              "leftValue": "={{ $json.allowed }}",
+              "rightValue": "DISQUALIFIED",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -4480,
+        624
+      ],
+      "id": "354dcd21-dca6-4f78-90a5-7833cbf0c4e6",
+      "name": "IS MD"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM",
+          "mode": "list",
+          "cachedResultName": "Initial Screening Submission (Responses)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1907678408,
+          "mode": "list",
+          "cachedResultName": "Form responses 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit#gid=1907678408"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Team Leader Mail id": "={{ $('PS VALIDATOR').item.json[\"Team Leader Mail id\"] }}",
+            "PS ID": "={{ $('PS VALIDATOR').item.json[\"PS ID\"] }}",
+            "Penality": "={{ $json.status }}",
+            "Reason": "={{ $json.reason }}",
+            "Processed": "Done"
+          },
+          "matchingColumns": [
+            "Team Leader Mail id"
+          ],
+          "schema": [
+            {
+              "id": "Timestamp",
+              "displayName": "Timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Team Name",
+              "displayName": "Team Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Team Leader Mail id",
+              "displayName": "Team Leader Mail id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "PS ID",
+              "displayName": "PS ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Submit the PPT",
+              "displayName": "Submit the PPT",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Submit the MD file",
+              "displayName": "Submit the MD file",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Declaration:",
+              "displayName": "Declaration:",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email address",
+              "displayName": "Email address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Processed",
+              "displayName": "Processed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Valid",
+              "displayName": "Valid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Reason",
+              "displayName": "Reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Penality",
+              "displayName": "Penality",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -4256,
+        624
+      ],
+      "id": "1fb01465-3e1d-4684-a93a-c3487b24fe46",
+      "name": "NOT A MD",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OwruUIKXDZqj7RUW",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "5ccd9336-8cb5-44b9-bc06-0ca5fa059ed6",
+              "leftValue": "={{ $json.Processed }}",
+              "rightValue": "Done",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -6496,
+        624
+      ],
+      "id": "4a2f4b88-2e7d-47d3-b25f-adc0e72aea61",
+      "name": "IF NOT DONE"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.fileId }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "id": "176fb519-b9b7-44a2-b4dc-c3ee74bb35fd",
+      "name": "Download file",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -5152,
+        624
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "sioV2Qspgvo83Ez9",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch"
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -3584,
+        240
+      ],
+      "id": "8fbe45e7-db18-4ab0-9663-ffe7fa81ace8",
+      "name": "Merge",
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM",
+          "mode": "list",
+          "cachedResultName": "Initial Screening Submission (Responses)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1430866750,
+          "mode": "list",
+          "cachedResultName": "Temp Mail - Nutrient.IO",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit#gid=1430866750"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -5824,
+        624
+      ],
+      "id": "e7ce0746-623a-4be6-8730-88d752f015c4",
+      "name": "API COLLECTION",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OwruUIKXDZqj7RUW",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const MIN_REQUIRED_TOKENS = 200; // Set minimum threshold\n\nconst rows = $input.all();\n\nconst available = rows\n  .map(item => item.json)\n  .filter(row => Number(row.TOKEN) >= MIN_REQUIRED_TOKENS)\n  .sort((a, b) => Number(b.TOKEN) - Number(a.TOKEN));\n\nif (available.length === 0) {\n  throw new Error(`No API keys available with at least ${MIN_REQUIRED_TOKENS} tokens.`);\n}\n\nconst selected = available[0];\n\nreturn [{\n  json: {\n    EMAIL: selected.EMAIL,\n    API_KEY: selected.API_KEY,\n    TOKEN: Number(selected.TOKEN),\n    row_number: selected.row_number\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -5600,
+        624
+      ],
+      "id": "f8ae75fe-974c-49b9-b73c-d342eb0a4b8a",
+      "name": "API SELECTION"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "83b9e4a2-11a3-41ef-813d-551068ffed42",
+              "leftValue": "={{ $json.fileType }}",
+              "rightValue": "PPT",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -4704,
+        624
+      ],
+      "id": "fcadea75-f5c5-48aa-8427-8da32af1ecba",
+      "name": "FILE SPLIT OUT"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.nutrient.io/extraction/parse",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('API SELECTION').item.json.API_KEY }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "instructions",
+              "value": "{\n      \"mode\": \"agentic\",\n      \"output\": {\n        \"formats\": [\n          \"spatial\",\n          \"markdown\"\n        ],\n        \"includeWords\": true\n      },\n      \"options\": {\n        \"language\": \"auto\"\n      }\n    }"
+            },
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "result.json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        -4032,
+        192
+      ],
+      "id": "6c90b3b7-8a6a-43aa-b021-19247e888d47",
+      "name": "PPT EXTRACTION"
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "destinationKey": "data_MD",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        -4256,
+        432
+      ],
+      "id": "c8fa9045-ff08-46ba-a3b9-3b963a7a9fd3",
+      "name": "MD FILE EXTRACTION"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "binaryPropertyName": "result.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        -3808,
+        192
+      ],
+      "id": "4c8e4be4-2683-4932-8267-1a0e0bad944f",
+      "name": "PPT OUTPUT"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Access data safely from both upstream extraction branches\nconst pptItems = $('PPT OUTPUT').all();\nconst mdItems = $('MD FILE EXTRACTION').all();\n\n// Collect extracted markdown string from PPT extraction (if available)\nconst pptMarkdown = pptItems.map(item => {\n  return item.json.data?.output?.markdown || item.json.markdown || \"\";\n}).filter(Boolean).join(\"\\n\\n\");\n\n// Collect text content from Markdown extraction (if available)\nconst markdownText = mdItems.map(item => item.json.data_MD || \"\").filter(Boolean).join(\"\\n\\n\");\n\n// Return unified payload for LLM Chain\nreturn [{\n  json: {\n    data: {\n      output: {\n        markdown: pptMarkdown\n      }\n    },\n    data_MD: markdownText\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3136,
+        240
+      ],
+      "id": "7ba9875a-22d7-4f5c-ae42-6a0564230378",
+      "name": "OVERALL CONTENT"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $('IF NOT DONE').first().json;\n\nconst pptUrl = item[\"Submit the PPT\"];\nconst mdUrl = item[\"Submit the MD file\"];\n\nfunction getFileId(url) {\n  if (!url) return null;\n\n  // Format: /file/d/FILE_ID/\n  let match = url.match(/\\/file\\/d\\/([^/]+)/);\n  if (match) return match[1];\n\n  // Format: ?id=FILE_ID or &id=FILE_ID\n  match = url.match(/[?&]id=([^&]+)/);\n  if (match) return match[1];\n\n  return null;\n}\n\nconst pptFileId = getFileId(pptUrl);\nconst mdFileId = getFileId(mdUrl);\n\nif (!pptFileId) {\n  throw new Error(`Could not extract PPT file ID from: ${pptUrl}`);\n}\n\nif (!mdFileId) {\n  throw new Error(`Could not extract MD file ID from: ${mdUrl}`);\n}\n\nreturn [\n  {\n    json: {\n      psId: item[\"PS ID\"],\n      teamName: item[\"Team Name\"],\n      fileType: \"PPT\",\n      fileId: pptFileId\n    }\n  },\n  {\n    json: {\n      psId: item[\"PS ID\"],\n      teamName: item[\"Team Name\"],\n      fileType: \"MD\",\n      fileId: mdFileId\n    }\n  }\n];"
+      },
+      "id": "10b7ebd1-b488-458c-9767-19003f3031d2",
+      "name": "MATIREIAL DOWNLOAD1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -5376,
+        624
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nreturn items.map(item => {\n  const binary = item.binary?.data;\n\n  if (!binary) {\n    return {\n      json: {\n        ...item.json,\n        allowed: false,\n        status: \"DISQUALIFIED\",\n        reason: \"No file uploaded\"\n      }\n    };\n  }\n\n  const fileName = binary.fileName || \"\";\n  const mimeType = (binary.mimeType || \"\").toLowerCase();\n\n  const extension = fileName.includes(\".\")\n    ? fileName.split(\".\").pop().toLowerCase()\n    : \"\";\n\n  // Allowed file extensions\n  const validExtension =\n    extension === \"ppt\" ||\n    extension === \"pptx\" ||\n    extension === \"md\" ||\n    extension === \"txt\";\n\n  // Allowed MIME types\n  const validMime =\n    mimeType === \"application/vnd.ms-powerpoint\" ||\n    mimeType === \"application/vnd.openxmlformats-officedocument.presentationml.presentation\" ||\n    mimeType === \"text/markdown\" ||\n    mimeType === \"text/plain\" ||\n    mimeType === \"\";\n\n  const allowed = validExtension && validMime;\n\n  let fileType;\n\n  if (extension === \"ppt\" || extension === \"pptx\") {\n    fileType = \"PPT\";\n  } else if (extension === \"md\" || extension === \"txt\") {\n    fileType = \"MARKDOWN\";\n  } else {\n    fileType = \"UNKNOWN\";\n  }\n\n  return {\n    json: {\n      ...item.json,\n      allowed,\n      status: allowed ? \"ALLOWED\" : \"DISQUALIFIED\",\n      fileName,\n      fileExtension: extension,\n      fileType,\n      mimeType,\n      reason: allowed\n        ? `Valid ${fileType} file`\n        : \"Only .ppt, .pptx, .md and .txt files are allowed\"\n    },\n    binary: item.binary\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4928,
+        624
+      ],
+      "id": "6141690a-3420-47e1-b547-6bf3a0f498fc",
+      "name": "FILE VALIDATION1"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM",
+          "mode": "list",
+          "cachedResultName": "Initial Screening Submission (Responses)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1430866750,
+          "mode": "list",
+          "cachedResultName": "Temp Mail - Nutrient.IO",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit#gid=1430866750"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "API_KEY": "={{ $('API SELECTION').item.json.API_KEY }}",
+            "TOKEN": "={{ $('PPT OUTPUT').item.json.data.usage.data_extraction_credits.remainingCredits }}"
+          },
+          "matchingColumns": [
+            "API_KEY"
+          ],
+          "schema": [
+            {
+              "id": "EMAIL",
+              "displayName": "EMAIL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "API_KEY",
+              "displayName": "API_KEY",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "TOKEN",
+              "displayName": "TOKEN",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -3360,
+        240
+      ],
+      "id": "8e460d0c-303f-474b-bc03-db49f200ff04",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OwruUIKXDZqj7RUW",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM",
+          "mode": "list",
+          "cachedResultName": "Initial Screening Submission (Responses)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 559418310,
+          "mode": "list",
+          "cachedResultName": "PS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit#gid=559418310"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "PS_ID",
+              "lookupValue": "={{ $json['PS ID'] }}"
+            }
+          ]
+        },
+        "combineFilters": "OR",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -6048,
+        624
+      ],
+      "id": "042021c6-30cc-4420-a8ce-1d155185ce48",
+      "name": "PS SELECTION",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OwruUIKXDZqj7RUW",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are the Problem Statement Analysis Engine for the X'O CODE 2026 Hackathon.\n\nYour task is to analyze the assigned Problem Statement and create a concise technical evaluation blueprint for another AI evaluator.\n\nYou are NOT evaluating a team.\nYou are NOT scoring anything.\nYou are NOT designing a complete solution.\nYou are NOT prescribing technologies.\n\nINPUT\n\nProblem Statement ID:\n{{ $('PS SELECTION').item.json.PS_ID }}\n\nProblem Statement:\n{{ $('PS SELECTION').item.json['Problem Description'] }}\n\nConstraints:\n{{ $('PS SELECTION').item.json['Constraints'] }}\n\nANALYZE ONLY THESE FIELDS:\n\n1. ps_id\n   Copy the Problem Statement ID.\n\n2. objective\n   State the core technical outcome the proposed system must achieve.\n   Keep it to 1–2 concise sentences.\n\n3. inputs\n   List the important data, signals, artifacts, or information the system must process.\n\n4. outputs\n   List the important results, decisions, predictions, actions, or artifacts the system should produce.\n\n5. critical_mechanisms\n   Identify the 3–6 most important technical mechanisms that a credible solution should address.\n\nFor each mechanism provide:\n \n* mechanism\n* purpose\n* expected_behavior\n\nDo not prescribe a specific technology unless the Problem Statement explicitly requires it.\n\n6. constraints\n   List only constraints explicitly stated in the Problem Statement.\n   Do not invent constraints.\n\n7. evaluation_requirements\n   List up to 8 pieces of technical evidence that a strong team proposal should provide.\n\nFocus on:\n\n* concrete mechanisms\n* data flow\n* processing logic\n* decision/inference logic\n* architecture reasoning\n* failure handling\n* uncertainty handling\n* constraint handling\n\nOnly include requirements relevant to this Problem Statement.\n\n8. critical_questions\n   Create 5–8 specific technical questions that a strict evaluator should be able to answer after reading a team's proposal.\n\nQuestions must be specific to this Problem Statement.\n\n9. minimum_credible_solution\n   In one concise paragraph, describe the minimum technical path a credible proposal should explain:\n\nINPUT → PROCESSING → ANALYSIS/DECISION → OUTPUT\n\nDo not design the solution in unnecessary detail.\n\nSTRICT RULES\n\n* Do not score.\n* Do not evaluate any team.\n* Do not generate a complete implementation.\n* Do not prescribe unnecessary technologies.\n* Do not invent requirements.\n* Do not convert optional capabilities into mandatory requirements.\n* Do not reward or require specific technology names.\n* Do not repeat the Problem Statement unnecessarily.\n* Do not include generic challenges unless they are directly relevant.\n* Keep every field concise.\n* Maximum 6 critical mechanisms.\n* Maximum 8 evaluation requirements.\n* Maximum 8 critical questions.\n* Prefer technical specificity over verbosity.\n\nIMPORTANT OUTPUT RULE:\n\nReturn ONLY the following JSON structure.\nDo not add any other fields.\n\n{\n\"ps_id\": \"\",\n\"objective\": \"\",\n\"inputs\": [],\n\"outputs\": [],\n\"critical_mechanisms\": [\n{\n\"mechanism\": \"\",\n\"purpose\": \"\",\n\"expected_behavior\": \"\"\n}\n],\n\"constraints\": [],\n\"evaluation_requirements\": [],\n\"critical_questions\": [],\n\"minimum_credible_solution\": \"\"\n}\n",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -1760,
+        144
+      ],
+      "id": "d2be89f9-a948-496b-860f-2fbe54ac4459",
+      "name": "PS Analysis",
+      "retryOnFail": false,
+      "waitBetweenTries": 5000,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are the STRICT TECHNICAL ANALYSIS ENGINE for the X'O CODE 2026 initial screening.\n\nYour task is to analyze the team's extracted technical content against the Problem Statement, Constraints, and PS Analysis.\n\nYou are NOT the final evaluator.\n\nDO NOT:\n- assign scores\n- recommend SHORTLIST/BORDERLINE/REJECT\n- invent technical details\n- give benefit of doubt\n- reward buzzwords or technology-name dumping\n- assume unstated implementation details\n\nOnly use evidence explicitly present in the extracted technical content.\n\nFor every important technical mechanism, classify the evidence as:\n\nSTRONG = technically explained with concrete implementation details.\n\nPARTIAL = described but important technical details are missing.\n\nMENTIONED_ONLY = named but not meaningfully explained.\n\nPay particular attention to:\n1. Problem understanding\n2. Core technical mechanisms\n3. Architecture\n4. Algorithm/model/decision logic\n5. Data handling\n6. Failure and edge-case handling\n7. Domain-specific technical quality\n8. Feasibility\n9. Security/privacy where relevant\n10. Critical technical gaps\n11. Unsupported claims\n\nTrace the solution where possible:\n\nINPUT → PROCESSING → CORE LOGIC → INFERENCE/ANALYSIS → DECISION → OUTPUT\n\nDo not penalize the absence of an architecture diagram if the written description is sufficient.\n\nDo not generate more than 8 mechanisms.\n\nKeep all evidence and assessments concise and specific.\n\nSTRICT OUTPUT REQUIREMENTS:\n\n- Return ONLY the required structured JSON.\n- Every required field must be present.\n- Every mechanism MUST contain exactly:\n  name, status, evidence, missing\n- Never omit \"missing\".\n- If nothing is missing, use an empty string.\n- Do not add fields outside the schema.\n- Do not leave JSON incomplete.\n\nPROBLEM STATEMENT:\n{{ $('PS SELECTION').item.json['Problem Description'] }}\n\nCONSTRAINTS:\n{{ $('PS SELECTION').item.json['Constraints'] }}\n\nPS ANALYSIS:\n{{ JSON.stringify($('PS Analysis').item.json) }}\n\nEXTRACTED TECHNICAL CONTENT:\n{{ JSON.stringify($('PPT ANALYSIS').item.json.output) }}\n{{ JSON.stringify($('MD ANALYSIS').item.json.output) }}",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -1184,
+        96
+      ],
+      "id": "8a50b392-4d86-424a-ac2a-5bd68f265eab",
+      "name": "Technical Analysis",
+      "retryOnFail": false,
+      "waitBetweenTries": 5000,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are the FINAL STRICT EVALUATOR for the X'O CODE 2026 initial screening.\n\nEvaluate the proposed solution using ONLY:\n\n1. Problem Statement\n2. Constraints\n3. PS Analysis\n4. Technical Analysis\n\nDo NOT invent information.\n\nSTRICT RULES:\n\n* Evaluate technical substance, not writing quality.\n* Do not reward buzzwords, feature count, technology-name dumping, or repetition.\n* Missing technical evidence must reduce the score.\n* Do not assume unexplained mechanisms exist.\n* Mentioned-only technologies/mechanisms receive little credit.\n* Generic architecture receives little credit.\n* Unsupported accuracy, performance, scalability, or security claims are not evidence.\n* Do not require an architecture diagram if the architecture is understandable from text.\n* Do not require optional features.\n* Do not let strengths in one category hide critical weaknesses in another.\n* Use the Technical Analysis as evidence, but do not blindly trust it if it contradicts the original problem statement.\n\nSCORING:\n\n1. Problem Relevance & Understanding — 15\n2. Innovation & Differentiation — 15\n3. Technical Depth & Solution Design — 25\n4. Solution Completeness & Technical Credibility — 20\n5. Domain-Specific Technical Quality — 15\n6. Real-World Impact & Applicability — 10\n\nSCORING CALIBRATION:\n90–100 = Exceptional\n80–89 = Strong\n70–79 = Good / credible\n60–69 = Borderline\n40–59 = Weak\n0–39 = Not technically credible\n\nRECOMMENDATION:\n\n* SHORTLIST: normally 70+\n* BORDERLINE: normally 55–69\n* REJECT: normally below 55\n* Critical technical failure may justify REJECT regardless of total.\n\nIMPORTANT:\noverall_score MUST equal the sum of the six category scores.\nEach score MUST be within its maximum.\nDo not inflate scores because the proposal sounds convincing.\n\nPROBLEM STATEMENT:\n{{ $('PS SELECTION').item.json['Problem Description'] }}\n\nCONSTRAINTS:\n{{ $('PS SELECTION').item.json['Constraints'] }}\n\nPS ANALYSIS:\n{{ JSON.stringify($('PS Analysis').item.json) }}\n\nTECHNICAL ANALYSIS:\n{{ JSON.stringify($('Technical Analysis').item.json) }}\n\nReturn ONLY the required JSON structure.\n",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -608,
+        48
+      ],
+      "id": "76bb1954-acdf-4923-b25d-4fe6fa692f47",
+      "name": "Final Evaluation",
+      "retryOnFail": false,
+      "waitBetweenTries": 5000,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM",
+          "mode": "list",
+          "cachedResultName": "Initial Screening Submission (Responses)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1240982764,
+          "mode": "list",
+          "cachedResultName": "Initial Screening",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit#gid=1240982764"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Team Leader Mail id": "={{ $('Loop Over Items2').item.json['Team Leader Mail id'] }}",
+            "Team Name": "={{ $('Loop Over Items2').item.json['Team Name'] }}",
+            "PS ID": "={{ $('PS VALIDATOR').item.json[\"PS ID\"] }}",
+            "Submit the PPT": "={{ $('Loop Over Items2').item.json['Submit the PPT'] }}",
+            "Submit the MD file": "={{ $('Loop Over Items2').item.json['Submit the MD file'] }}",
+            "problem_relevance_understanding_justification": "={{ $json.output.problem_relevance_understanding.justification }}",
+            "overall_score": "={{ Number($json.output.problem_relevance_understanding.score) + Number($json.output.innovation_differentiation.score) + Number($json.output.technical_depth_solution_design.score) + Number($json.output.solution_completeness_technical_credibility.score) + Number($json.output.domain_specific_technical_quality.score) + Number($json.output.real_world_impact_applicability.score) }}\n",
+            "strengths": "={{ $json.output.strengths }}",
+            "weaknesses": "={{ $json.output.weaknesses }}",
+            "missing_information": "={{ $json.output.missing_information }}",
+            "red_flags": "={{ $json.output.red_flags }}",
+            "recommendation": "={{ $json.output.recommendation }}",
+            "technical_depth_solution_design_justification": "={{ $json.output.technical_depth_solution_design.justification }}",
+            "solution_completeness_technical_credibility_justification": "={{ $json.output.solution_completeness_technical_credibility.justification }}",
+            "problem_relevance_understanding_score/15": "={{ $json.output.problem_relevance_understanding.score }}",
+            "technical_depth_solution_design_score/25": "={{ $json.output.technical_depth_solution_design.score }}",
+            "solution_completeness_technical_credibility_score/20": "={{ $json.output.solution_completeness_technical_credibility.score }}",
+            "innovation_differentiation_score/15": "={{ $json.output.innovation_differentiation.score }}",
+            "innovation_differentiation_justification": "={{ $json.output.innovation_differentiation.justification }}",
+            "domain_specific_technical_quality_score/15": "={{ $json.output.domain_specific_technical_quality.score }}",
+            "domain_specific_technical_quality_justification": "={{ $json.output.domain_specific_technical_quality.justification }}",
+            "real_world_impact_applicability_score/10": "={{ $json.output.real_world_impact_applicability.score }}",
+            "real_world_impact_applicability_justification": "={{ $json.output.real_world_impact_applicability.justification }}"
+          },
+          "matchingColumns": [
+            "Team Leader Mail id"
+          ],
+          "schema": [
+            {
+              "id": "Team Leader Mail id",
+              "displayName": "Team Leader Mail id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Team Name",
+              "displayName": "Team Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "PS ID",
+              "displayName": "PS ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Submit the PPT",
+              "displayName": "Submit the PPT",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Submit the MD file",
+              "displayName": "Submit the MD file",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "problem_relevance_understanding_score/15",
+              "displayName": "problem_relevance_understanding_score/15",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "problem_relevance_understanding_justification",
+              "displayName": "problem_relevance_understanding_justification",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "innovation_differentiation_score/15",
+              "displayName": "innovation_differentiation_score/15",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "innovation_differentiation_justification",
+              "displayName": "innovation_differentiation_justification",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "technical_depth_solution_design_score/25",
+              "displayName": "technical_depth_solution_design_score/25",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "technical_depth_solution_design_justification",
+              "displayName": "technical_depth_solution_design_justification",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "solution_completeness_technical_credibility_score/20",
+              "displayName": "solution_completeness_technical_credibility_score/20",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "solution_completeness_technical_credibility_justification",
+              "displayName": "solution_completeness_technical_credibility_justification",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "domain_specific_technical_quality_score/15",
+              "displayName": "domain_specific_technical_quality_score/15",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "domain_specific_technical_quality_justification",
+              "displayName": "domain_specific_technical_quality_justification",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "real_world_impact_applicability_score/10",
+              "displayName": "real_world_impact_applicability_score/10",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "real_world_impact_applicability_justification",
+              "displayName": "real_world_impact_applicability_justification",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "overall_score",
+              "displayName": "overall_score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "strengths",
+              "displayName": "strengths",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "weaknesses",
+              "displayName": "weaknesses",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "missing_information",
+              "displayName": "missing_information",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "red_flags",
+              "displayName": "red_flags",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "recommendation",
+              "displayName": "recommendation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -256,
+        0
+      ],
+      "id": "f4be4da5-5ba9-4726-b15f-3ff5e2c20d4a",
+      "name": "Update Initial Screening Sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OwruUIKXDZqj7RUW",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM",
+          "mode": "list",
+          "cachedResultName": "Demo Form (Responses)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1907678408,
+          "mode": "list",
+          "cachedResultName": "Form responses 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit#gid=1907678408"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Team Leader Mail id": "={{ $('Loop Over Items2').item.json['Team Leader Mail id'] }}",
+            "Processed": "Done",
+            "Penality": "={{ $('PS VALIDATOR').item.json.Penality }}",
+            "Reason": "={{ $('PS VALIDATOR').item.json.Reason }}",
+            "PS ID": "={{ $('PS VALIDATOR').item.json[\"PS ID\"] }}"
+          },
+          "matchingColumns": [
+            "Team Leader Mail id"
+          ],
+          "schema": [
+            {
+              "id": "Timestamp",
+              "displayName": "Timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Team Name",
+              "displayName": "Team Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Team Leader Mail id",
+              "displayName": "Team Leader Mail id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "PS ID",
+              "displayName": "PS ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Submit the PPT",
+              "displayName": "Submit the PPT",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Submit the MD file",
+              "displayName": "Submit the MD file",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Declaration:",
+              "displayName": "Declaration:",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email address",
+              "displayName": "Email address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Processed",
+              "displayName": "Processed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Valid",
+              "displayName": "Valid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Reason",
+              "displayName": "Reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Penality",
+              "displayName": "Penality",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -32,
+        0
+      ],
+      "id": "d62d0f7a-05a2-4258-873e-df951746365e",
+      "name": "Update Process",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "OwruUIKXDZqj7RUW",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "function extractPSId(value) {\n  if (value === null || value === undefined) {\n    return {\n      id: null,\n      reason: \"PS ID is missing\"\n    };\n  }\n\n  // Already a number\n  if (typeof value === \"number\") {\n    if (\n      Number.isFinite(value) &&\n      Number.isInteger(value) &&\n      value >= 1\n    ) {\n      return {\n        id: value,\n        reason: \"\"\n      };\n    }\n\n    return {\n      id: null,\n      reason: \"Invalid PS ID number\"\n    };\n  }\n\n  let text = String(value);\n\n  // Normalize whitespace and Unicode characters\n  text = text\n    .replace(/\\u00A0/g, \" \")\n    .replace(/[\\u200B-\\u200D\\uFEFF]/g, \"\")\n    .replace(/\\t/g, \" \")\n    .replace(/\\r?\\n/g, \" \")\n    .replace(/[‐-‒–—―]/g, \"-\")\n    .replace(/\\s+/g, \" \")\n    .trim();\n\n  if (!text) {\n    return {\n      id: null,\n      reason: \"PS ID is empty\"\n    };\n  }\n\n  // Pure number as string\n  if (/^\\d+$/.test(text)) {\n    const num = Number(text);\n\n    if (\n      Number.isSafeInteger(num) &&\n      num >= 1\n    ) {\n      return {\n        id: num,\n        reason: \"\"\n      };\n    }\n\n    return {\n      id: null,\n      reason: \"Invalid PS ID number\"\n    };\n  }\n\n  // Matches PS_4, PS4, PS_ID:4, PD_ID:5, P_ID:5, PROBLEM_4, etc.\n  const match = text.match(\n    /\\b(?:PS|PD|P|PROBLEM)(?:[\\s_-]*ID)?\\b\\s*(?::|=|-|_)?\\s*(?:\\(|\\[|\\{)?\\s*(\\d+)\\s*(?:\\)|\\]|\\})?/i\n  );\n\n  if (match) {\n    const num = Number(match[1]);\n\n    if (\n      Number.isSafeInteger(num) &&\n      num >= 1\n    ) {\n      return {\n        id: num,\n        reason: \"\"\n      };\n    }\n\n    return {\n      id: null,\n      reason: \"Invalid PS ID number\"\n    };\n  }\n\n  // Problem Statement formats (e.g. \"Problem Statement 4\")\n  const problemMatch = text.match(\n    /\\bproblem[\\s_-]*statement\\b\\s*[:=_-]?\\s*(\\d+)\\b/i\n  );\n\n  if (problemMatch) {\n    const num = Number(problemMatch[1]);\n    const allNumbers = text.match(/\\b\\d+\\b/g) || [];\n\n    if (\n      allNumbers.length === 1 &&\n      Number.isSafeInteger(num) &&\n      num >= 1\n    ) {\n      return {\n        id: num,\n        reason: \"\"\n      };\n    }\n\n    return {\n      id: null,\n      reason: \"PS ID format contains multiple or ambiguous numbers\"\n    };\n  }\n\n  return {\n    id: null,\n    reason: `Unable to identify PS ID from submitted value: \"${text}\"`\n  };\n}\n\n\n// =============================================================\n// PROCESS ALL INCOMING ITEMS\n// =============================================================\n\nreturn $input.all().map((item) => {\n  const originalValue = item.json[\"PS ID\"];\n  const result = extractPSId(originalValue);\n\n  // Build output object\n  const output = {\n    ...item.json,\n    \"PS ID\": result.id\n  };\n\n  // Process penalty & reason\n  if (result.id === null) {\n    // Invalid or unparseable PS ID\n    output[\"Reason\"] = item.json[\"Reason\"]\n      ? `${item.json[\"Reason\"]}; ${result.reason}`\n      : result.reason;\n    output[\"Penality\"] = 5;\n\n  } else if (typeof originalValue === \"string\" && !/^\\d+$/.test(originalValue.trim())) {\n    // Valid ID extracted, but value was submitted as formatted string (e.g., \"PS_4\")\n    output[\"Reason\"] = originalValue;\n    output[\"Penality\"] = 5;\n\n  } else {\n    // Clean integer input (number or pure numeric string)\n    if (!item.json[\"Reason\"]) {\n      output[\"Reason\"] = \"\";\n    }\n    if (item.json[\"Penality\"] === undefined) {\n      output[\"Penality\"] = \"\";\n    }\n  }\n\n  return {\n    json: output\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -6272,
+        624
+      ],
+      "id": "03f268f1-b22f-4434-9f03-92db95d91148",
+      "name": "PS VALIDATOR"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -2336,
+        432
+      ],
+      "id": "e01be29c-c310-4c3e-bd35-c2f184fee060",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "domLtRU0gGsWb9Eh",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"technical_approach\": {\n      \"type\": \"string\",\n      \"description\": \"Technical approach, methodology, and engineering process explicitly described by the team.\"\n    },\n    \"architecture\": {\n      \"type\": \"string\",\n      \"description\": \"System architecture, components, modules, layers, services, pipelines, and component interactions.\"\n    },\n    \"algorithm_core_logic\": {\n      \"type\": \"string\",\n      \"description\": \"Algorithms, formulas, decision logic, computational logic, processing logic, and step-by-step methods.\"\n    },\n    \"data_flow_processing\": {\n      \"type\": \"string\",\n      \"description\": \"How data enters, moves through, is transformed, processed, stored, transmitted, and converted into outputs.\"\n    },\n    \"implementation\": {\n      \"type\": \"string\",\n      \"description\": \"Concrete implementation details including modules, classes, components, services, pipelines, and platform-specific implementation.\"\n    },\n    \"model_ai_methodology\": {\n      \"type\": \"string\",\n      \"description\": \"AI/ML models, model architectures, training, fine-tuning, prompts, agents, embeddings, classifiers, datasets, features, and inference methods.\"\n    },\n    \"security_privacy\": {\n      \"type\": \"string\",\n      \"description\": \"Explicitly described security and privacy mechanisms such as authentication, authorization, encryption, access control, secure storage, and anonymization.\"\n    },\n    \"testing_validation\": {\n      \"type\": \"string\",\n      \"description\": \"Testing methods, validation procedures, benchmarks, metrics, test cases, performance testing, and evaluation procedures.\"\n    },\n    \"solution\": {\n      \"type\": \"string\",\n      \"description\": \"The proposed technical solution and how it addresses the problem.\"\n    },\n    \"features\": {\n      \"type\": \"string\",\n      \"description\": \"Technically relevant features and functionality explicitly described by the team.\"\n    },\n    \"technology_stack\": {\n      \"type\": \"string\",\n      \"description\": \"Programming languages, frameworks, libraries, platforms, SDKs, cloud services, and development tools.\"\n    },\n    \"database_apis\": {\n      \"type\": \"string\",\n      \"description\": \"Databases, storage systems, external APIs, protocols, integrations, and data services.\"\n    }\n  },\n  \"required\": [\n    \"technical_approach\",\n    \"architecture\",\n    \"algorithm_core_logic\",\n    \"data_flow_processing\",\n    \"implementation\",\n    \"model_ai_methodology\",\n    \"security_privacy\",\n    \"testing_validation\",\n    \"solution\",\n    \"features\",\n    \"technology_stack\",\n    \"database_apis\"\n  ],\n  \"additionalProperties\": false\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -2208,
+        432
+      ],
+      "id": "d2f1e3e4-4047-4e8f-a6d0-f5eb3a7c48a0",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "amount": 40
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -1984,
+        416
+      ],
+      "id": "14de7261-28bc-4739-9e9a-0810934d7dc0",
+      "name": "Wait",
+      "webhookId": "885f80ec-6b1a-476b-bb0f-2f2a578f18d1"
+    },
+    {
+      "parameters": {
+        "amount": 40
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -2560,
+        192
+      ],
+      "id": "6ef7c996-f15e-4412-982f-870a7c37c3a4",
+      "name": "Wait1",
+      "webhookId": "b68872fc-67da-4236-b9f7-c9ebc61bb520"
+    },
+    {
+      "parameters": {
+        "amount": 40
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -1984,
+        144
+      ],
+      "id": "213c222e-4423-4614-9ac6-e8c0d4894f3e",
+      "name": "Wait2",
+      "webhookId": "ea79233e-bfc7-4966-929d-38933b7d836b"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are the **Technical Content Extraction Engine** for the X'O CODE 2026 Hackathon.\n\nYour ONLY task is to read the team's submitted PPT and extract the **actual technical content explicitly provided by the team**.\n\nYou are NOT an evaluator.\n\n### STRICT RULES\n\n1. Do NOT score the team.\n2. Do NOT judge the quality of the solution.\n3. Do NOT identify strengths or weaknesses.\n4. Do NOT answer evaluation questions.\n5. Do NOT make assumptions or infer missing technical details.\n6. Do NOT add information from your own knowledge.\n7. Do NOT invent algorithms, technologies, architecture, datasets, APIs, models, or implementation details.\n8. Preserve concrete technical details from the README.\n9. Do not over-summarize technical mechanisms.\n10. If the README says:\n    \"Audio is resampled to 16 kHz, MFCC features are extracted, normalized, and passed to a CNN\"\n    preserve those processing steps rather than reducing them to \"uses MFCC and CNN.\"\n11. If information is not present, return an empty string.\n12. Read the ENTIRE provided Markdown before extracting.\n13. Technical information appearing near the end of the README is equally important and must not be discarded.\n14. If the README contains irrelevant promotional or descriptive content, prioritize technical information instead.\n15. Return ONLY the structured output required by the output parser.\n\n### EXTRACT THE FOLLOWING\n\n#### HIGH PRIORITY\n\n**technical_approach**\nExtract the team's described technical approach, methodology, and overall engineering process.\n\n**architecture**\nExtract system architecture, components, modules, layers, services, pipelines, and how components interact.\n\n**algorithm_core_logic**\nExtract algorithms, formulas, decision logic, processing logic, detection logic, workflows, and step-by-step computational methods.\n\n**data_flow_processing**\nExtract how data enters the system, how it is processed, transformed, stored, transmitted, and converted into outputs.\n\n**implementation**\nExtract concrete implementation details such as modules, classes/components, processing stages, backend/frontend implementation, Android components, services, pipelines, etc.\n\n**model_ai_methodology**\nExtract AI/ML models, model architectures, training/fine-tuning methods, prompts, agents, inference methods, embeddings, classifiers, datasets, features, and AI pipelines.\n\n**security_privacy**\nExtract authentication, authorization, encryption, privacy mechanisms, access control, secure storage, threat mitigation, anonymization, and other explicitly stated security mechanisms.\n\n**testing_validation**\nExtract testing methods, validation procedures, benchmarks, evaluation metrics, test cases, accuracy measurements, performance testing, and validation strategy.\n\n#### MEDIUM PRIORITY\n\n**solution**\nExtract the actual proposed solution and how it addresses the stated problem.\n\n**features**\nExtract technically relevant features and functionality.\n\n**technology_stack**\nExtract programming languages, frameworks, libraries, platforms, SDKs, cloud services, tools, and technologies.\n\n**database_apis**\nExtract databases, storage systems, external APIs, protocols, integrations, and data services.\n\n### EXTRACTION QUALITY\n\nFocus on **evidence**, not presentation quality.\n\nPreserve:\n\n* technical terminology\n* component names\n* model names\n* algorithms\n* parameters\n* processing steps\n* inputs and outputs\n* data formats\n* architecture relationships\n* APIs\n* databases\n* security mechanisms\n* testing metrics\n* implementation details\n\nDo not rewrite technical content into vague statements.\n\nIf the same technical information appears in multiple sections, combine it without unnecessary repetition.\n\nIf a section contains both marketing language and technical information, extract only the technically useful information.\n\nThe extracted content will later be provided to a separate evaluation model together with the original Problem Statement. Therefore, your job is simply:\n\n**\"What technical information did this team actually provide?\"**\n\nDo not answer:\n\n**\"Is their solution good?\"**\n\n### TEAM PPT\n\n{{ $('OVERALL CONTENT').item.json.data.output.markdown }}\n\n\n",
+        "hasOutputParser": true,
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        -2912,
+        240
+      ],
+      "id": "deed0769-e8a0-4bf1-bbc7-2a2799ed3e3d",
+      "name": "PPT ANALYSIS",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are the **Technical Content Extraction Engine** for the X'O CODE 2026 Hackathon.\n\nYour ONLY task is to read the team's submitted Markdown/README and extract the **actual technical content explicitly provided by the team**.\n\nYou are NOT an evaluator.\n\n### STRICT RULES\n\n1. Do NOT score the team.\n2. Do NOT judge the quality of the solution.\n3. Do NOT identify strengths or weaknesses.\n4. Do NOT answer evaluation questions.\n5. Do NOT make assumptions or infer missing technical details.\n6. Do NOT add information from your own knowledge.\n7. Do NOT invent algorithms, technologies, architecture, datasets, APIs, models, or implementation details.\n8. Preserve concrete technical details from the README.\n9. Do not over-summarize technical mechanisms.\n10. If the README says:\n    \"Audio is resampled to 16 kHz, MFCC features are extracted, normalized, and passed to a CNN\"\n    preserve those processing steps rather than reducing them to \"uses MFCC and CNN.\"\n11. If information is not present, return an empty string.\n12. Read the ENTIRE provided Markdown before extracting.\n13. Technical information appearing near the end of the README is equally important and must not be discarded.\n14. If the README contains irrelevant promotional or descriptive content, prioritize technical information instead.\n15. Return ONLY the structured output required by the output parser.\n\n### EXTRACT THE FOLLOWING\n\n#### HIGH PRIORITY\n\n**technical_approach**\nExtract the team's described technical approach, methodology, and overall engineering process.\n\n**architecture**\nExtract system architecture, components, modules, layers, services, pipelines, and how components interact.\n\n**algorithm_core_logic**\nExtract algorithms, formulas, decision logic, processing logic, detection logic, workflows, and step-by-step computational methods.\n\n**data_flow_processing**\nExtract how data enters the system, how it is processed, transformed, stored, transmitted, and converted into outputs.\n\n**implementation**\nExtract concrete implementation details such as modules, classes/components, processing stages, backend/frontend implementation, Android components, services, pipelines, etc.\n\n**model_ai_methodology**\nExtract AI/ML models, model architectures, training/fine-tuning methods, prompts, agents, inference methods, embeddings, classifiers, datasets, features, and AI pipelines.\n\n**security_privacy**\nExtract authentication, authorization, encryption, privacy mechanisms, access control, secure storage, threat mitigation, anonymization, and other explicitly stated security mechanisms.\n\n**testing_validation**\nExtract testing methods, validation procedures, benchmarks, evaluation metrics, test cases, accuracy measurements, performance testing, and validation strategy.\n\n#### MEDIUM PRIORITY\n\n**solution**\nExtract the actual proposed solution and how it addresses the stated problem.\n\n**features**\nExtract technically relevant features and functionality.\n\n**technology_stack**\nExtract programming languages, frameworks, libraries, platforms, SDKs, cloud services, tools, and technologies.\n\n**database_apis**\nExtract databases, storage systems, external APIs, protocols, integrations, and data services.\n\n### EXTRACTION QUALITY\n\nFocus on **evidence**, not presentation quality.\n\nPreserve:\n\n* technical terminology\n* component names\n* model names\n* algorithms\n* parameters\n* processing steps\n* inputs and outputs\n* data formats\n* architecture relationships\n* APIs\n* databases\n* security mechanisms\n* testing metrics\n* implementation details\n\nDo not rewrite technical content into vague statements.\n\nIf the same technical information appears in multiple sections, combine it without unnecessary repetition.\n\nIf a section contains both marketing language and technical information, extract only the technically useful information.\n\nThe extracted content will later be provided to a separate evaluation model together with the original Problem Statement. Therefore, your job is simply:\n\n**\"What technical information did this team actually provide?\"**\n\nDo not answer:\n\n**\"Is their solution good?\"**\n\n### TEAM MARKDOWN\n\n{{ $('OVERALL CONTENT').item.json['data_MD'] }}\n\n\n",
+        "hasOutputParser": true,
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        -2336,
+        192
+      ],
+      "id": "d1009f14-5da0-4299-a0bc-335655a55081",
+      "name": "MD ANALYSIS",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM",
+          "mode": "list",
+          "cachedResultName": "Initial Screening Submission (Responses)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1907678408,
+          "mode": "list",
+          "cachedResultName": "Form responses 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1si2XtyIEY8f441sG3AmfLuDpc9A6JSfyNSsH3eFMaVM/edit#gid=1907678408"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        -6944,
+        960
+      ],
+      "id": "66bb54ab-298b-44a8-a8c9-9aa4c88394ba",
+      "name": "Google Sheets Trigger",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "3gNHeTGYz1ob59XP",
+          "name": "Google Sheets Trigger account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Groq Chat Model5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "PS Analysis",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser5": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "PS Analysis",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items2": {
+      "main": [
+        [],
+        [
+          {
+            "node": "IF NOT DONE",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait7": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model6": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Technical Analysis",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser6": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Technical Analysis",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model7": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Final Evaluation",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser7": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Final Evaluation",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait8": {
+      "main": [
+        [
+          {
+            "node": "Technical Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait9": {
+      "main": [
+        [
+          {
+            "node": "Final Evaluation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait10": {
+      "main": [
+        [
+          {
+            "node": "PS Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait11": {
+      "main": [
+        [
+          {
+            "node": "Technical Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait12": {
+      "main": [
+        [
+          {
+            "node": "Final Evaluation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model8": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "PPT ANALYSIS",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser8": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "PPT ANALYSIS",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait13": {
+      "main": [
+        [
+          {
+            "node": "PPT ANALYSIS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IMAGE VERIFICATION": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HAS IMAGE": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "IMAGE VERIFICATION",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IMAGE RECOGINITION": {
+      "main": [
+        [
+          {
+            "node": "HAS IMAGE",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IS MD": {
+      "main": [
+        [
+          {
+            "node": "MD FILE EXTRACTION",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "NOT A MD",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NOT A MD": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF NOT DONE": {
+      "main": [
+        [
+          {
+            "node": "PS VALIDATOR",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "FILE VALIDATION1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "API COLLECTION": {
+      "main": [
+        [
+          {
+            "node": "API SELECTION",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "API SELECTION": {
+      "main": [
+        [
+          {
+            "node": "MATIREIAL DOWNLOAD1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FILE SPLIT OUT": {
+      "main": [
+        [
+          {
+            "node": "PPT EXTRACTION",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "IS MD",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PPT EXTRACTION": {
+      "main": [
+        [
+          {
+            "node": "PPT OUTPUT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MD FILE EXTRACTION": {
+      "main": [
+        [
+          {
+            "node": "IMAGE RECOGINITION",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PPT OUTPUT": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MATIREIAL DOWNLOAD1": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FILE VALIDATION1": {
+      "main": [
+        [
+          {
+            "node": "FILE SPLIT OUT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OVERALL CONTENT": {
+      "main": [
+        [
+          {
+            "node": "PPT ANALYSIS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "OVERALL CONTENT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PS SELECTION": {
+      "main": [
+        [
+          {
+            "node": "API COLLECTION",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PS Analysis": {
+      "main": [
+        [
+          {
+            "node": "Wait8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Technical Analysis": {
+      "main": [
+        [
+          {
+            "node": "Wait9",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final Evaluation": {
+      "main": [
+        [
+          {
+            "node": "Update Initial Screening Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Initial Screening Sheet": {
+      "main": [
+        [
+          {
+            "node": "Update Process",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Process": {
+      "main": [
+        [
+          {
+            "node": "Wait7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PS VALIDATOR": {
+      "main": [
+        [
+          {
+            "node": "PS SELECTION",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "MD ANALYSIS",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "MD ANALYSIS",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "MD ANALYSIS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "MD ANALYSIS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "PS Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PPT ANALYSIS": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MD ANALYSIS": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "c024bdc4-85df-48bb-8a9c-b9ec4bcfafa5",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ca85712c2372e1561495bf0b70fde6586984367fd6b743670f4a6fb6ac29daeb"
+  },
+  "nodeGroups": [],
+  "id": "MnSXreIaos3nWFZN",
+  "tags": []
+}
